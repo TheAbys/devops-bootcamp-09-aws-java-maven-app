@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #!/usr/bin/env groovy
 
 library identifier: 'jenkins-shared-library@master', retriever: modernSCM(
@@ -6,13 +7,17 @@ library identifier: 'jenkins-shared-library@master', retriever: modernSCM(
     credentialsID: 'gitlab-credentials'
     ]
 )
+=======
+#!/usr/bin.env groovy
+>>>>>>> master
 
-pipeline {
+pipeline {   
     agent any
     tools {
         maven 'Maven'
     }
     stages {
+<<<<<<< HEAD
         stage('increment version') {
             steps {
                 script {
@@ -72,3 +77,30 @@ pipeline {
         }
     }
 }
+=======
+        stage("test") {
+            steps {
+                script {
+                    echo "Testing the application..."
+
+                }
+            }
+        }
+        stage("build") {
+            steps {
+                script {
+                    echo "Building the application..."
+                }
+            }
+        }
+
+        stage("deploy") {
+            steps {
+                script {
+                    echo "Deploying the application..."
+                }
+            }
+        }               
+    }
+} 
+>>>>>>> master
