@@ -59,3 +59,13 @@ Through having to take a break on this subject I had to cancel DigitalOcean and 
         git remote remove origin
         git remote add origin git@github.com:TheAbys/devops-bootcamp-09-aws-java-maven-app.git
         git push --all
+
+
+The pipeline now automatically runs the container on the second ec2 instance.
+
+    docker run -p 3080:8080 -d 561656302811.dkr.ecr.eu-central-1.amazonaws.com/k0938261-training:latest
+
+While in the video port 3080 should be exposed I found that I've still got an image with port 8080 exposed.
+After some troubleshooting I've changed the port when running the application and everything works now.
+
+If the port 3080 is used for the container and the host, than obviously the application must run on the defined port.
