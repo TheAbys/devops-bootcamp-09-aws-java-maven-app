@@ -75,3 +75,20 @@ This solution is
 - working great with different clouds (DigitalOcean, Linode, AWS, ...) or self hosted like within the company as it is just a basic ssh access to those servers
 
 For more complexe scenarios a container orchestration tool like Kubernetes is required.
+
+# 8 - Deploy to EC2 server from Jenkins Pipeline - CI/CD Part 2
+
+At first we need to install docker-compose and make it executable
+
+    sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
+
+We can check the version through
+
+    docker-compose --version
+
+Cleanup ec2 instance
+
+    docker ps
+    docker stop <container-hash>
+    docker rm <container-hash>
