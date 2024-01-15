@@ -69,3 +69,9 @@ While in the video port 3080 should be exposed I found that I've still got an im
 After some troubleshooting I've changed the port when running the application and everything works now.
 
 If the port 3080 is used for the container and the host, than obviously the application must run on the defined port.
+
+This solution is
+- only really applicable for small applications.
+- working great with different clouds (DigitalOcean, Linode, AWS, ...) or self hosted like within the company as it is just a basic ssh access to those servers
+
+For more complexe scenarios a container orchestration tool like Kubernetes is required.
