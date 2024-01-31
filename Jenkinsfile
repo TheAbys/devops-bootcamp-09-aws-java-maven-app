@@ -34,8 +34,8 @@ pipeline {
             steps {
                 script {
                     echo 'building the docker image...'
-                    //dockerBuildImageECR("aws-credentials", env.IMAGE_NAME, "561656302811.dkr.ecr.eu-central-1.amazonaws.com")
-                    dockerBuildImageECR("aws-credentials", "0938261-training:latest", "561656302811.dkr.ecr.eu-central-1.amazonaws.com")
+                    dockerBuildImageECR("aws-credentials", env.IMAGE_NAME, "561656302811.dkr.ecr.eu-central-1.amazonaws.com")
+                    //dockerBuildImageECR("aws-credentials", "0938261-training:latest", "561656302811.dkr.ecr.eu-central-1.amazonaws.com")
                 }
             }
         } 
