@@ -42,7 +42,7 @@ pipeline {
             steps {
                 script {
                     // deploy("ec2-user", "3.68.213.53", "docker run -p 3080:3080 -d 561656302811.dkr.ecr.eu-central-1.amazonaws.com/$env.IMAGE_NAME")
-                    deploy("ec2-user", "3.68.213.53", "ssh-agent-credentials", "docker-compose -f docker-compose.yaml up --detach")
+                    deploy("ec2-user", "3.68.213.53", "docker-compose -f docker-compose.yaml up --detach", "ssh-agent-credentials")
                 }
             }               
         }
