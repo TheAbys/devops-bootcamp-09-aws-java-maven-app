@@ -1,7 +1,8 @@
 version: '3.8'
 services:
     java-maven-app:
-      image: ${IMAGE}
+      #image: ${IMAGE}
+      image: 561656302811.dkr.ecr.eu-central-1.amazonaws.com/k0938261-training:latest
       ports:
         - 8080:8080
     postgres:
