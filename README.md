@@ -100,3 +100,10 @@ A few notes what I had to do:
 - update my jenkins-library regarding deployment, had some error because of using "deploy" as function name instead of "call"
 - manual login on the ec2 instance
 - add ssh key for communicating with the other ec2 instance (one topic which was somehow not clarified or I didn't get it)
+
+# 8 - Deploy to EC2 server from Jenkins Pipeline - CI/CD Part 3
+
+Take over the version generating functionality from previous modules.
+I've already done that on Part 2.
+
+Pushing the version commit seems not to work with github.
