@@ -92,3 +92,11 @@ Cleanup ec2 instance
     docker ps
     docker stop <container-hash>
     docker rm <container-hash>
+
+Disclaimer: It is very hard to follow this part as it feels like nothing matches or information is being skipped.
+I've got everything to work, even if it's not working perfect
+
+A few notes what I had to do:
+- update my jenkins-library regarding deployment, had some error because of using "deploy" as function name instead of "call"
+- manual login on the ec2 instance
+- add ssh key for communicating with the other ec2 instance (one topic which was somehow not clarified or I didn't get it)
