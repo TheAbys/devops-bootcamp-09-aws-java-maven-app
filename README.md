@@ -241,9 +241,9 @@ Create access key
 {
     "AccessKey": {
         "UserName": "-awscli-user",
-        "AccessKeyId": "AKIAYFRKTBTNQHL4Y3VU",
+        "AccessKeyId": "",
         "Status": "Active",
-        "SecretAccessKey": "+X87iig6FhEzbbDH1RuwKSW3wNf4iG5VUoiThdkh",
+        "SecretAccessKey": "",
         "CreateDate": "2024-02-01T15:19:48+00:00"
     }
 }
