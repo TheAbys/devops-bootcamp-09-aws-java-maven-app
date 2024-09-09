@@ -1,3 +1,5 @@
+[Notes overview](https://github.com/TheAbys/devops-bootcamp-certification-project/blob/master/README.md)
+
 # 7 - Introduction to EC2 Virtual Cloud Server
 
 We've created our own instance
