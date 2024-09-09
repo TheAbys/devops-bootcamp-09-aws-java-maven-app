@@ -63,7 +63,7 @@ Through having to take a break on this subject I had to cancel DigitalOcean and 
 
 The pipeline now automatically runs the container on the second ec2 instance.
 
-    docker run -p 3080:8080 -d 561656302811.dkr.ecr.eu-central-1.amazonaws.com/k0938261-training:latest
+    docker run -p 3080:8080 -d 561656302811.dkr.ecr.eu-central-1.amazonaws.com/-training:latest
 
 While in the video port 3080 should be exposed I found that I've still got an image with port 8080 exposed.
 After some troubleshooting I've changed the port when running the application and everything works now.
@@ -127,14 +127,14 @@ Usage
 Create a new ec2 instance with a new keypair and security group, subnet will be reused
 
     # set the company proxy
-    export HTTP_PROXY=http://http-proxy.krones-deu.krones-group.com:3128
-    export HTTPS_PROXY=http://http-proxy.krones-deu.krones-group.com:3128
+    export HTTP_PROXY=<http-proxy>
+    export HTTPS_PROXY=<https-proxy>
 
     aws ec2 describe-security-groups
     
     aws ec2 describe-vpcs
 
-    aws ec2 create-security-group --group-name k0938261_security_group --description "k0938261 security group created by awscli for training" --vpc-id vpc-071a096f
+    aws ec2 create-security-group --group-name _security_group --description " security group created by awscli for training" --vpc-id vpc-071a096f
 
     {
         "GroupId": "sg-0b41576cd1633d2a0"
@@ -152,9 +152,9 @@ Create a new ec2 instance with a new keypair and security group, subnet will be 
 
     # create ssh key
     aws ec2 create-key-pair \
-    --key-name k0938261-key-pair \
+    --key-name -key-pair \
     --query 'KeyMaterial' \
-    --output text > k0938261-key-pair.pem
+    --output text > -key-pair.pem
 
     # start a new ec2 instance from cli
     # all the information like image-id or instance-type can be looked up via the cli or directly in the aws console ui
@@ -163,10 +163,10 @@ Create a new ec2 instance with a new keypair and security group, subnet will be 
     --image-id ami-02fe204d17e0189fb \
     --count 1 \
     --instance-type t2.micro \
-    --key-name k0938261-key-pair \
+    --key-name -key-pair \
     --security-group-ids sg-0b41576cd1633d2a0 \
     --subnet-id subnet-d650809b \
-    --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=k0938261_training_awscli}, {Key=SERVICE,Value=training}]' 'ResourceType=volume,Tags=[{Key=Name,Value=k0938261_training_awscli},{Key=SERVICE,Value=training}]'
+    --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=_training_awscli}, {Key=SERVICE,Value=training}]' 'ResourceType=volume,Tags=[{Key=Name,Value=_training_awscli},{Key=SERVICE,Value=training}]'
 
 # 11 - Introduction to AWS CLI - Part 1
 
@@ -178,17 +178,17 @@ Filter and query specific values of a result
 
 Create a user group
 
-    aws iam create-group --group-name k0938261-awscli-group
+    aws iam create-group --group-name -awscli-group
 
-    aws iam create-user --user-name k0938261-awscli-user
+    aws iam create-user --user-name -awscli-user
 
 Get information about group
 
-    aws iam get-group --group-name k0938261-awscli-group
+    aws iam get-group --group-name -awscli-group
 
 Add user to group
 
-    aws iam add-user-to-group --user-name k0938261-awscli-user --group-name k0938261-awscli-group
+    aws iam add-user-to-group --user-name -awscli-user --group-name -awscli-group
 
 Find the ARN (amazon resource name) for "AmazonEC2FullAccess"
 
@@ -196,18 +196,18 @@ Find the ARN (amazon resource name) for "AmazonEC2FullAccess"
 
 Attach policy to group
 
-    aws iam attach-group-policy --group-name k0938261-awscli-group --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess
+    aws iam attach-group-policy --group-name -awscli-group --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess
 
 List again
 
-    aws iam list-attached-group-policies --group-name k0938261-awscli-group
+    aws iam list-attached-group-policies --group-name -awscli-group
 
 Create a new login profile for the user
 
-    aws iam create-login-profile --user-name k0938261-awscli-user --password MyPassword! --password-reset-required
+    aws iam create-login-profile --user-name -awscli-user --password MyPassword! --password-reset-required
 
-    aws iam get-user --user-name k0938261-awscli-user
-    aws iam get-group --group-name k0938261-awscli-group
+    aws iam get-user --user-name -awscli-user
+    aws iam get-group --group-name -awscli-group
 
 Create a policy
 
@@ -228,17 +228,17 @@ Create a policy
   ]
 }
 
-    aws iam create-policy --policy-name k0938261-policy --policy-document file://changePwdPolicy.json
+    aws iam create-policy --policy-name -policy --policy-document file://changePwdPolicy.json
 
-    aws iam attach-group-policy --group-name k0938261-awscli-group --policy-arn arn:aws:iam::561656302811:policy/k0938261-policy
+    aws iam attach-group-policy --group-name -awscli-group --policy-arn arn:aws:iam::561656302811:policy/-policy
     
 Create access key
 
-    aws iam create-access-key --user-name k0938261-awscli-user
+    aws iam create-access-key --user-name -awscli-user
 
 {
     "AccessKey": {
-        "UserName": "k0938261-awscli-user",
+        "UserName": "-awscli-user",
         "AccessKeyId": "AKIAYFRKTBTNQHL4Y3VU",
         "Status": "Active",
         "SecretAccessKey": "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",
